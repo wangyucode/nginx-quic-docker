@@ -1,2 +1,0 @@
-172.21.0.1 - - [01/Oct/2022:00:52:47 +0800] "GET / HTTP/2.0" 200 615 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36" ""
-172.21.0.1 - - [01/Oct/2022:00:52:53 +0800] "GET / HTTP/2.0" 200 615 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36" ""

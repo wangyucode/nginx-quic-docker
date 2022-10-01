@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   nginx:
-    image: jauderho/nginx-quic:git-ubuntu-boringssl
+    image: wangyucode/nginx-quic
     container_name: nginx
     restart: unless-stopped
     environment:

@@ -14,6 +14,14 @@ RUN apt-get update && \
     cmake -DCMAKE_LINKER=/usr/bin/mold -GNinja .. && \
     ninja
 
+RUN mkdir ngx_brotli && \
+    cd ngx_brotli && \
+    git init && \
+    git remote add origin https://github.com/google/ngx_brotli.git && \
+    git fetch --depth 1 origin 9aec15e2aa6feea2113119ba06460af70ab3ea62 && \
+    git checkout --recurse-submodules -q FETCH_HEAD && \
+    git submodule update --init --depth 1
+
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends mercurial libperl-dev libpcre2-dev zlib1g-dev libxslt1-dev libgd-ocaml-dev libgeoip-dev && \
     hg clone https://hg.nginx.org/nginx-quic && \
     cd nginx-quic && \
@@ -37,6 +45,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends me
       --with-stream_quic_module \
       --with-http_gzip_static_module \
       --with-http_realip_module \
+      --add-module=/src/ngx_brotli \
       --with-cc=/usr/bin/gcc-12 \
       --with-cc-opt='-I/src/boringssl/include -fuse-ld=mold -O3 -march=native -pipe -flto=auto -ffat-lto-objects -fomit-frame-pointer -fstack-protector-all -fPIE -fexceptions --param=ssp-buffer-size=4 -grecord-gcc-switches -pie -fno-semantic-interposition -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -Wformat-security -Wno-error=strict-aliasing -Wextra -Wp,-D_FORTIFY_SOURCE=2' \
       --with-ld-opt='-L/src/boringssl/build/ssl -L/src/boringssl/build/crypto -O3 -Wl,-Bsymbolic-functions -Wl,-z,relro' && \
@@ -75,5 +84,5 @@ EXPOSE 443/tcp
 EXPOSE 443/udp
 
 
-#ENTRYPOINT ["nginx", "-g", "daemon off;"]
-ENTRYPOINT ["nginx"]
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
+# ENTRYPOINT ["nginx"]
