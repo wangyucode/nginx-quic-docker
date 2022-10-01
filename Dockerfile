@@ -18,7 +18,7 @@ RUN mkdir ngx_brotli && \
     cd ngx_brotli && \
     git init && \
     git remote add origin https://github.com/google/ngx_brotli.git && \
-    git fetch --depth 1 origin 9aec15e2aa6feea2113119ba06460af70ab3ea62 && \
+    git fetch --depth 1 origin && \
     git checkout --recurse-submodules -q FETCH_HEAD && \
     git submodule update --init --depth 1
 
