@@ -35,6 +35,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends me
       --with-http_v2_module \
       --with-http_v3_module \
       --with-stream_quic_module \
+      --with-http_gzip_static_module \
       --with-http_realip_module \
       --with-cc=/usr/bin/gcc-12 \
       --with-cc-opt='-I/src/boringssl/include -fuse-ld=mold -O3 -march=native -pipe -flto=auto -ffat-lto-objects -fomit-frame-pointer -fstack-protector-all -fPIE -fexceptions --param=ssp-buffer-size=4 -grecord-gcc-switches -pie -fno-semantic-interposition -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -Wformat-security -Wno-error=strict-aliasing -Wextra -Wp,-D_FORTIFY_SOURCE=2' \
