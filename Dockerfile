@@ -84,5 +84,5 @@ EXPOSE 443/tcp
 EXPOSE 443/udp
 
 
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
-# ENTRYPOINT ["nginx"]
+# ENTRYPOINT ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["nginx"]
